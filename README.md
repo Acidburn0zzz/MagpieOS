@@ -11,4 +11,8 @@ This is the archiso build script for bulding MagpieOS
 
 # Official website
 
-Download MagpieOS from <a href="http://magpieos.net">MagpieOS.NET</a> 
+Download MagpieOS from <a href="http://magpieos.net">MagpieOS.NET</a>
+
+# See latest news
+
+Like us on facebook <a href="https://www.facebook.com/magpieos">Magpie Linux</a>
