@@ -2,8 +2,8 @@
 
 set -e -u
 
-iso_name="MagpieOS-2.0"
-iso_label="MagpieOS_$(date +%Y%m)"
+iso_name="MagpieOS-2.0-Ormeli"
+iso_label="MagpieOS_2.0_Ormeli"
 iso_version=$(date +%Y.%m.%d)
 install_dir=arch
 work_dir=work
