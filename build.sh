@@ -9,8 +9,8 @@ install_dir=arch
 work_dir=work
 out_dir=out
 gpg_key=
-iso_publisher="Rizwan Hasan <rizwan.hasan486@gmail.com>"
-iso_application="MagpieOS Live/Installable CD"
+iso_publisher="MagpieOS <http://MagpieOS.NET>"
+iso_application="MagpieOS 2.0 (Ormeli)"
 
 arch=$(uname -m)
 verbose=""
