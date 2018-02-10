@@ -6,7 +6,7 @@ This is the archiso build script for building MagpieOS
 
 # Review video (YouTube)
 
-<a href="https://youtu.be/OYPMCaBzlH8">
+<a href="https://www.youtube.com/watch?v=OYPMCaBzlH8">
   <img src="https://i.ytimg.com/vi/OYPMCaBzlH8/maxresdefault.jpg" width="500px"></img></a> 
 
 # Official website
