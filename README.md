@@ -2,7 +2,7 @@
 
 MagpieOS is based on Arch Linux<br>
 And using GNOME3<br>
-This is the archiso build script for bulding MagpieOS
+This is the archiso build script for building MagpieOS
 
 # Review video (YouTube)
 
