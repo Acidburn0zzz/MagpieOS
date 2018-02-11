@@ -76,6 +76,10 @@ chown liveuser:wheel /home/liveuser/.config/autostart/calamares.desktop
 chmod +x /home/liveuser/.config/autostart/calamares.desktop
 # ################################################################################################
 
+# ########## Adding custom /etc/nanorc for Nano ######## 
+mv -vf /etc/skel/.magpie-settings/etc-nanorc /etc/nanorc
+# ######################################################
+
 # ###############################
 rm -dr /etc/skel/.magpie-settings 
 rm -dr /etc/skel/.magpie-packages
