@@ -1,4 +1,4 @@
-# MagpieOS
+# MagpieOS [![GitHub license](https://img.shields.io/github/license/calamares/calamares.svg)](https://github.com/Rizwan-Hasan/MagpieOS/blob/master/LICENSE)
 
 MagpieOS is based on Arch Linux<br>
 And using GNOME3<br>
