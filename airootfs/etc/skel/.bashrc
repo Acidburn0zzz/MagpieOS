@@ -1,9 +1,6 @@
 # ~/.bashrc: executed by bash for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
-xhost +SI:localuser:root
-clear
-clear
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -159,3 +156,6 @@ fi
 
 # added by Miniconda2 installer
 export PATH="/home/hulk/miniconda2/bin:$PATH"
+xhost +SI:localuser:root
+clear
+cat /etc/issue | lolcat --truecolor

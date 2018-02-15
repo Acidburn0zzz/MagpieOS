@@ -37,6 +37,7 @@ libunrar
 linux
 linux-headers
 linux-firmware
+lolcat
 lvm2
 linux-atm
 lsscsi
@@ -161,6 +162,7 @@ grub-themes-magpie
 magpie-cursor
 magpieos-wallpaper
 magpie-getsource
+magpieos-startup
 Numix-Cursor-Maia
 package-query
 pamac
