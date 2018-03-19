@@ -147,7 +147,7 @@ virtualbox-guest-utils
 
 adobe-source-code-pro-fonts
 bleachbit
-libreoffice-still
+libreoffice-fresh
 gimp
 qt4
 simplescreenrecorder
@@ -160,7 +160,7 @@ papirus-icon-theme
 
 aic94xx-firmware
 wd719x-firmware
-neofetch
+neofetch-magpie
 grub-themes-magpie
 magpie-cursor
 magpieos-wallpaper
@@ -170,6 +170,7 @@ nature-wallpapers
 Numix-Cursor-Maia
 package-query
 pamac
+pendrive-formatter
 vimix-gtk-magpie-theme
 yaourt
 
