@@ -16,7 +16,9 @@ mv -v /etc/skel/.magpie-settings/pacman.conf /etc/pacman.conf
 # ###########################################################
 
 # ############### Importing pacman keys ############
-pacman-key --init && pacman-key --populate archlinux
+pacman-key --init 
+pacman-key --populate archlinux
+pacman-key --refresh-keys
 # ##################################################
 
 # ################################################## Creating liveuser #####################################################
@@ -62,7 +64,7 @@ sed -i 's/#\(HandleLidSwitch=\)suspend/\1ignore/' /etc/systemd/logind.conf
 # ############################# Removing packages #################################################
 pacman -R --noconfirm xf86-video-intel gnome-terminal gnome-backgrounds swell-foop tali gnome-mines
 pacman -R --noconfirm aisleriot anjuta gnome-nibbles gnome-robots gnome-sudoku gnome-tetravex
-pacman -R --noconfirm atomix gnome-builder five-or-more four-in-a-row gnome-mahjongg 
+pacman -R --noconfirm atomix gnome-builder five-or-more four-in-a-row gnome-mahjongg hitori
 pacman -R --noconfirm gnome-klotski gnome-taquin iagno lightsoff quadrapassel polari gnome-2048
 # #################################################################################################
 
