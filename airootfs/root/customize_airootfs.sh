@@ -15,12 +15,6 @@ rm -v /etc/pacman.conf
 mv -v /etc/skel/.magpie-settings/pacman.conf /etc/pacman.conf
 # ###########################################################
 
-# ############### Importing pacman keys ############
-pacman-key --init 
-pacman-key --populate archlinux
-pacman-key --refresh-keys
-# ##################################################
-
 # ################################################## Creating liveuser #####################################################
 useradd -m -p "" -g users -G "adm,audio,floppy,log,network,rfkill,scanner,storage,optical,power,wheel" -s /bin/bash liveuser
 cp -avT /etc/skel/ /home/liveuser/
@@ -34,6 +28,12 @@ mv -v /etc/skel/.magpie-settings/sudoers-backup /etc/sudoers
 chown -c root:root /etc/sudoers
 chmod -c 0440 /etc/sudoers
 # ##########################################################
+
+# ############### Importing pacman keys ############
+pacman-key --init 
+pacman-key --populate archlinux
+pacman-key --refresh-keys
+# ##################################################
 
 # ##################### OS Information ########################
 rm -v /etc/lsb-release
@@ -99,8 +99,8 @@ amixer sset Master unmute
 chmod 755 /
 # #########################
 
-# ###########################################################################
-systemctl enable pacman-init.service choose-mirror.service NetworkManager gdm
+# ####################################################################################
+systemctl enable pacman-init.service choose-mirror.service NetworkManager gdm zramswap
 systemctl set-default graphical.target
-# ###########################################################################
+# ####################################################################################
 

@@ -150,6 +150,8 @@ virtualbox-guest-utils
 
 adobe-source-code-pro-fonts
 bleachbit
+filezilla
+gparted
 libreoffice-fresh
 gimp
 qt4
@@ -162,6 +164,7 @@ papirus-icon-theme
 ## Magpie Repository
 
 aic94xx-firmware
+ckbcomp
 wd719x-firmware
 neofetch-magpie
 grub-themes-magpie
@@ -175,9 +178,49 @@ package-query
 pamac
 vimix-gtk-magpie-theme
 yaourt
+zramswap
 
 ## Extra Packages
 
-filezilla
-gparted
 yaml-cpp
+kconfig
+kcoreaddons
+qt5-svg
+polkit-qt5
+kauth
+kcodecs
+kguiaddons
+ki18n
+kwidgetsaddons
+kconfigwidgets
+kitemviews
+karchive
+kiconthemes
+kjobwidgets
+kdbusaddons
+kwindowsystem
+kcrash
+kglobalaccel
+kcompletion
+kservice
+sonnet
+qt5-multimedia
+qt5-speech
+ktextwidgets
+attica
+kxmlgui
+kbookmarks
+libdbusmenu-qt5
+knotifications
+kwallet
+kio
+qt5-sensors
+qt5-webchannel
+qt5-webkit
+python2-dbus
+python2-gobject
+kpmcore
+python-nautilus
+python2-psutil
+python2-xapp
+xapps
