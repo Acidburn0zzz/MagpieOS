@@ -62,12 +62,9 @@ make_basefs() {
 	arch-chroot "${work_dir}/${arch}/airootfs" pacman -R linux --noconfirm
 	# Adding magpie pacman conf on airootfs
 	cp -vf pacman.conf "${work_dir}/${arch}/airootfs/etc/"
-	# Magpie kernel installation on airootfs
+    # Magpie kernel installation on airootfs
 	arch-chroot "${work_dir}/${arch}/airootfs" pacman -S linux-magpie --noconfirm
 	arch-chroot "${work_dir}/${arch}/airootfs" pacman -S linux-magpie-headers --noconfirm
-	arch-chroot "${work_dir}/${arch}/airootfs" pacman -S linux-magpie-docs --noconfirm
-	# Cleaning pacman repository cache of airootfs
-	#arch-chroot "${work_dir}/${arch}/airootfs" pacman -Sc --noconfirm
 }
 
 # Additional packages (airootfs)

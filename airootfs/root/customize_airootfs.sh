@@ -10,11 +10,6 @@ cp -aT /etc/skel/ /root/
 chmod 700 /root
 # ##############################################
 
-# ######### Adding custom repositor to pacman.conf ##########
-rm -v /etc/pacman.conf
-mv -v /etc/skel/.magpie-settings/pacman.conf /etc/pacman.conf
-# ###########################################################
-
 # ################################################## Creating liveuser #####################################################
 useradd -m -p "" -g users -G "adm,audio,floppy,log,network,rfkill,scanner,storage,optical,power,wheel" -s /bin/bash liveuser
 cp -avT /etc/skel/ /home/liveuser/
@@ -68,9 +63,14 @@ pacman -R --noconfirm atomix gnome-builder five-or-more four-in-a-row gnome-mahj
 pacman -R --noconfirm gnome-klotski gnome-taquin iagno lightsoff quadrapassel polari gnome-2048
 # #################################################################################################
 
-# ############ Installing custom packages to rootfs ###############
+# ############ Installing custom packages to rootfs ############### 
 cd /etc/skel/.magpie-packages && pacman -U --noconfirm *.pkg.tar.xz
 # #################################################################
+
+# ### Changing pacman.conf for magpie-mirrrorlist support ##
+rm -drv /etc/pacman.conf
+cp -v /etc/skel/.magpie-settings/pacman.conf /etc/
+# ##########################################################
 
 # ############################ MagpieOS Install Desktop File #####################################
 cp -v /usr/share/applications/calamares.desktop /home/liveuser/.config/autostart/calamares.desktop
