@@ -88,17 +88,41 @@
 
 #dashtodockContainer.running-dots .app-well-app.focused  .overview-icon,
 #dashtodockContainer.dashtodock .app-well-app.focused  .overview-icon {
-    background-color: rgba(238, 238, 236, 0.1);
+    background-color: rgba(238, 238, 236, 0.2);
 }
 
 #dashtodockContainer.dashtodock #dash {
     background: #2e3436;
 }
 
+/* Only alpha value is used */
+#dashtodockContainer.opaque {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-color: rgba(0, 0, 0, 0.4);
+    transition-duration: 300ms;
+}
+
+/* Only alpha value is used */
+#dashtodockContainer.transparent {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: rgba(0, 0, 0, 0.1);
+    transition-duration: 500ms;
+}
+
 #dashtodockContainer .number-overlay {
     color: rgba(255,255,255,1);
     background-color: rgba(0,0,0,0.8);
     text-align: center;
+}
+
+#dashtodockContainer .notification-badge {
+    color: rgba(255,255,255,1);
+    background-color: rgba(255,0,0,1.0);
+    padding: 0.2em 0.5em;
+    border-radius: 1em;
+    font-weight: bold;
+    text-align: center;
+    margin: 2px;
 }
 
 #dashtodockPreviewSeparator.popup-separator-menu-item-horizontal {

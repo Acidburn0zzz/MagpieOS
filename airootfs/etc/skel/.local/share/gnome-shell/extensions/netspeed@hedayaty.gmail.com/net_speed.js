@@ -15,6 +15,10 @@
   * along with this program.  If not, see <http://www.gnu.org/licenses/>.
   */
 
+/* Ugly. This is here so that we don't crash old libnm-glib based shells unnecessarily
+ * by loading the new libnm.so. Should go away eventually */
+const libnm_glib = imports.gi.GIRepository.Repository.get_default().is_registered("NMClient", "1.0");
+
 const Lang = imports.lang;
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
 const Gettext = imports.gettext;
@@ -24,8 +28,8 @@ const GLib = imports.gi.GLib;
 const Mainloop = imports.mainloop;
 const Panel = imports.ui.main.panel;
 
-const NMC = imports.gi.NMClient;
-const NetworkManager = imports.gi.NetworkManager;
+const NMC = libnm_glib ? imports.gi.NMClient : imports.gi.NM;
+const NetworkManager = libnm_glib ? imports.gi.NetworkManager : NMC;
 
 const _ = Gettext.domain('netspeed').gettext;
 const NetSpeedStatusIcon = Extension.imports.net_speed_status_icon;
@@ -52,15 +56,18 @@ const NetSpeed = new Lang.Class(
     },
 
     /**
-     * NetSpeed: _check_devices
+     * NetSpeed: _is_up2date
+
      */
-    _check_devices: function()
+    _is_up2date: function()
     {
-        if (this._devices.length != this._olddevices.length)
+        if (this._devices.length != this._olddevices.length) {
             return 0;
-        for (let i = 0; i < this._devices.length; ++i)
+        }
+        for (let i = 0; i < this._devices.length; ++i) {
             if (this._devices[i] != this._olddevices[i])
                 return 0;
+        }
         return 1;
     },
 
@@ -206,7 +213,7 @@ const NetSpeed = new Lang.Class(
         var total_speed = null;
         var up_speed = null;
         var down_speed = null;
-        if (this._check_devices() == 1)	{
+        if (this._is_up2date() == 1)	{
             for (let i = 0; i < this._values.length; ++i) {
                 let _up = this._values[i][0] - this._oldvalues[i][0];
                 let _down = this._values[i][1] - this._oldvalues[i][1];
@@ -298,14 +305,12 @@ const NetSpeed = new Lang.Class(
 
         this._values = new Array();
         this._devices = new Array();
-        this._client = NMC.Client.new();
+        this._client = libnm_glib ? NMC.Client.new() : NMC.Client.new(null);
 
-        let schemaDir = Extension.dir.get_child('schemas').get_path();
-        let schemaSource = Gio.SettingsSchemaSource.new_from_directory(
-            schemaDir,
-            Gio.SettingsSchemaSource.get_default(),
-            false
-        );
+        let schemaDir = Extension.dir.get_child('schemas');
+        let schemaSource = schemaDir.query_exists(null)?
+                            Gio.SettingsSchemaSource.new_from_directory(schemaDir.get_path(), Gio.SettingsSchemaSource.get_default(), false):
+                            Gio.SettingsSchemaSource.get_default();
         let schema = schemaSource.lookup('org.gnome.shell.extensions.netspeed', false);
         this._setting = new Gio.Settings({ settings_schema: schema });
         this._saving = 0;
