@@ -158,4 +158,5 @@ fi
 export PATH="/home/hulk/miniconda2/bin:$PATH"
 xhost +SI:localuser:root
 clear
+clear
 cat /etc/issue | lolcat --truecolor

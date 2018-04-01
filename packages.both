@@ -16,6 +16,7 @@ dnsmasq
 dnsutils
 dmidecode
 dosfstools
+efibootmgr
 elinks
 exfat-utils
 e2fsprogs
@@ -209,6 +210,8 @@ kcrash
 kglobalaccel
 kcompletion
 kservice
+lilv
+lv2
 sonnet
 qt5-multimedia
 qt5-speech
@@ -229,4 +232,7 @@ kpmcore
 python-nautilus
 python2-psutil
 python2-xapp
+serd
+sord
+sratom
 xapps

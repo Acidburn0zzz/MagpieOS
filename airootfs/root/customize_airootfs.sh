@@ -57,10 +57,10 @@ sed -i 's/#\(HandleLidSwitch=\)suspend/\1ignore/' /etc/systemd/logind.conf
 # #############################################################################
 
 # ############################# Removing packages #################################################
-pacman -R --noconfirm xf86-video-intel gnome-terminal gnome-backgrounds swell-foop tali gnome-mines
-pacman -R --noconfirm gnome-nibbles gnome-robots gnome-sudoku gnome-tetravex hitori totem
+pacman -R --noconfirm gnome-terminal swell-foop tali gnome-mines gnome-tetravex
+pacman -R --noconfirm gnome-nibbles gnome-robots gnome-sudoku hitori quadrapassel
 pacman -R --noconfirm atomix gnome-builder five-or-more four-in-a-row gnome-mahjongg
-pacman -R --noconfirm gnome-klotski gnome-taquin iagno lightsoff quadrapassel polari
+pacman -R --noconfirm gnome-klotski gnome-taquin iagno lightsoff polari
 # #################################################################################################
 
 # ############ Installing custom packages to rootfs ############### 
