@@ -25,7 +25,7 @@ chmod -c 0440 /etc/sudoers
 # ##########################################################
 
 # ############### Importing pacman keys ############
-pacman-key --init 
+pacman-key --init
 pacman-key --populate archlinux
 pacman-key --refresh-keys
 # ##################################################
@@ -56,14 +56,14 @@ sed -i 's/#\(HandleHibernateKey=\)hibernate/\1ignore/' /etc/systemd/logind.conf
 sed -i 's/#\(HandleLidSwitch=\)suspend/\1ignore/' /etc/systemd/logind.conf
 # #############################################################################
 
-# ############################# Removing packages #################################################
-pacman -R --noconfirm gnome-terminal swell-foop tali gnome-mines gnome-tetravex
-pacman -R --noconfirm gnome-nibbles gnome-robots gnome-sudoku hitori quadrapassel
-pacman -R --noconfirm atomix gnome-builder five-or-more four-in-a-row gnome-mahjongg
-pacman -R --noconfirm gnome-klotski gnome-taquin iagno lightsoff polari
-# #################################################################################################
+# ############################# Removing packages ################################################
+pacman -R --noconfirm gnome-terminal swell-foop tali gnome-mines gnome-tetravex gnome-recipes
+pacman -R --noconfirm gnome-nibbles gnome-robots gnome-sudoku hitori quadrapassel accerciser
+pacman -R --noconfirm atomix gnome-builder five-or-more four-in-a-row gnome-mahjongg devhelp lftp
+pacman -R --noconfirm gnome-klotski gnome-taquin iagno lightsoff polari gnome-multi-writer ipython
+# ################################################################################################
 
-# ############ Installing custom packages to rootfs ############### 
+# ############ Installing custom packages to rootfs ###############
 cd /etc/skel/.magpie-packages && pacman -U --noconfirm *.pkg.tar.xz
 # #################################################################
 
@@ -78,7 +78,7 @@ chown liveuser:wheel /home/liveuser/.config/autostart/calamares.desktop
 chmod +x /home/liveuser/.config/autostart/calamares.desktop
 # ################################################################################################
 
-# ########## Adding custom /etc/nanorc for Nano ######## 
+# ########## Adding custom /etc/nanorc for Nano ########
 mv -vf /etc/skel/.magpie-settings/etc-nanorc /etc/nanorc
 # ######################################################
 
@@ -88,7 +88,7 @@ cp -v /etc/skel/.magpie-settings/magpie-release /etc/
 # ###################################################
 
 # ###############################
-rm -dr /etc/skel/.magpie-settings 
+rm -dr /etc/skel/.magpie-settings
 rm -dr /etc/skel/.magpie-packages
 # ###############################
 
@@ -100,7 +100,7 @@ rm -v /usr/share/X11/xorg.conf.d/70-synaptics.conf
 amixer sset Master unmute
 # #######################
 
-# ### Fixing Permisssion ## 
+# ### Fixing Permisssion ##
 chmod 755 /
 # #########################
 
@@ -108,4 +108,3 @@ chmod 755 /
 systemctl enable pacman-init.service choose-mirror.service NetworkManager gdm zramswap ntpd
 systemctl set-default graphical.target
 # #########################################################################################
-

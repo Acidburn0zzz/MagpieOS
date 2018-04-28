@@ -48,6 +48,7 @@ lsscsi
 lsb-release
 mtools
 ndisc6
+neofetch
 nfs-utils
 nilfs-utils
 nmap
@@ -155,6 +156,7 @@ virtualbox-guest-utils
 adobe-source-code-pro-fonts
 bleachbit
 chrome-gnome-shell
+codeblocks
 filezilla
 gparted
 libreoffice-fresh
@@ -172,13 +174,14 @@ papirus-icon-theme
 aic94xx-firmware
 ckbcomp
 wd719x-firmware
-neofetch-magpie
 grub-themes-magpie
 magpie-cursor
 magpie-mirrorlist
 magpieos-wallpaper
 magpie-getsource
 magpieos-startup
+mkinitcpio-numlock
+mkinitcpio-openswap
 nature-wallpapers
 Numix-Cursor-Maia
 package-query

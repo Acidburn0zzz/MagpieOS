@@ -7,7 +7,7 @@ iso_label="MagpieOS_2.2_Maya"
 iso_version=$(date +%Y.%m.%d)
 install_dir=arch
 work_dir=work
-out_dir=out
+out_dir=ISO_Image
 gpg_key=
 iso_publisher="MagpieOS <http://MagpieOS.NET>"
 iso_application="MagpieOS 2.2 (Maya)"
@@ -57,14 +57,12 @@ make_pacman_conf() {
 # Base installation, plus needed packages (airootfs)
 make_basefs() {
     setarch ${arch} mkarchiso ${verbose} -w "${work_dir}/${arch}" -C "${work_dir}/pacman.conf" -D "${install_dir}" init
-    setarch ${arch} mkarchiso ${verbose} -w "${work_dir}/${arch}" -C "${work_dir}/pacman.conf" -D "${install_dir}" -p "haveged intel-ucode memtest86+ mkinitcpio-nfs-utils nbd zsh" install	 	
+    setarch ${arch} mkarchiso ${verbose} -w "${work_dir}/${arch}" -C "${work_dir}/pacman.conf" -D "${install_dir}" -p "haveged intel-ucode memtest86+ mkinitcpio-nfs-utils nbd zsh" install
 	# Remove base kernel from airootfs
 	arch-chroot "${work_dir}/${arch}/airootfs" pacman -R linux --noconfirm
 	# Adding magpie pacman.conf on airootfs
-	cp -vf pacman.conf "${work_dir}/${arch}/airootfs/etc/"
-	# Adding magpie pamac.conf on airootfs
-    cp -v pamac.conf "${work_dir}/${arch}/airootfs/etc/"
-    # Magpie kernel installation on airootfs
+	cp -f pacman.conf "${work_dir}/${arch}/airootfs/etc/"
+  # Magpie kernel installation on airootfs
 	arch-chroot "${work_dir}/${arch}/airootfs" pacman -S linux-magpie --noconfirm
 	arch-chroot "${work_dir}/${arch}/airootfs" pacman -S linux-magpie-headers --noconfirm
 }
@@ -223,6 +221,7 @@ make_prepare() {
 # Build ISO
 make_iso() {
     mkarchiso ${verbose} -w "${work_dir}" -D "${install_dir}" -L "${iso_label}" -o "${out_dir}" iso "${iso_name}-${iso_version}-x86_64.iso"
+    chmod 777 "${out_dir}" "${out_dir}"/*
 }
 
 if [[ ${EUID} -ne 0 ]]; then
@@ -286,3 +285,5 @@ for arch in x86_64; do
 done
 
 run_once make_iso
+
+# End
