@@ -1,8 +1,12 @@
+work_dir=build_work
+out_dir=ISO_Image
+
 all:
-	sudo ./build.sh -v
-
+	@rm -rf ${work_dir} ${ISO_Image}
+	@./build.sh -v
 iso:
-	sudo ./build.sh -v
-
+	@rm -rf ${work_dir} ${ISO_Image}
+	@./build.sh -v
 clean:
-	sudo rm -dr work ISO_Image
+	@rm -rfv ${work_dir} ${out_dir}
+	@echo "Cleaned"
