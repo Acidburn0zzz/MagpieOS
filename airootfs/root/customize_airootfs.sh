@@ -92,6 +92,11 @@ rm /etc/mkinitcpio.conf
 cp /etc/skel/.magpie-settings/mkinitcpio.conf /etc/
 # #################################################
 
+# ######## Adding custom ntp config ########
+rm /etc/ntp.conf
+cp /etc/skel/.magpie-settings/ntp.conf /etc/
+# ##########################################
+
 # ###############################
 rm -dr /etc/skel/.magpie-settings
 rm -dr /etc/skel/.magpie-packages
