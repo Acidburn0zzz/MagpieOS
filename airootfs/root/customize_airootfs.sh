@@ -87,6 +87,11 @@ rm -v /etc/arch-release
 cp -v /etc/skel/.magpie-settings/magpie-release /etc/
 # ###################################################
 
+# ######## Adding custom mkinitcpio config ########
+rm /etc/mkinitcpio.conf
+cp /etc/skel/.magpie-settings/mkinitcpio.conf /etc/
+# #################################################
+
 # ###############################
 rm -dr /etc/skel/.magpie-settings
 rm -dr /etc/skel/.magpie-packages

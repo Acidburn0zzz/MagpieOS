@@ -29,7 +29,6 @@ gpm
 gpgme
 gnupg
 gptfdisk
-grml-zsh-config
 grub
 hdparm
 hwinfo
@@ -160,6 +159,7 @@ codeblocks
 filezilla
 gparted
 libreoffice-fresh
+messengerfordesktop
 gimp
 qt4
 simplescreenrecorder
