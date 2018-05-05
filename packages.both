@@ -175,7 +175,7 @@ aic94xx-firmware
 breeze--cursor-theme
 breeze-adapta-cursor-theme
 ckbcomp
-wd719x-firmware
+fetchmirrors
 grub-themes-magpie
 magpie-cursor
 magpie-mirrorlist
@@ -190,6 +190,7 @@ openbangla-keyboard
 package-query
 pamac
 vimix-gtk-magpie-theme
+wd719x-firmware
 yaourt
 zramswap
 
