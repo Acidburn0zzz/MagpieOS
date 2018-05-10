@@ -82,10 +82,11 @@ chmod +x /home/liveuser/.config/autostart/calamares.desktop
 mv -vf /etc/skel/.magpie-settings/etc-nanorc /etc/nanorc
 # ######################################################
 
-# ### Copying release info of MagpieOS to livecd ####
-rm -v /etc/arch-release
-cp -v /etc/skel/.magpie-settings/magpie-release /etc/
-# ###################################################
+# ######## Copying release info of MagpieOS to livecd ########
+rm /etc/arch-release
+cp /etc/skel/.magpie-settings/magpie-release /etc/
+cp /etc/skel/.magpie-settings/magpie-release /etc/arch-release
+# ############################################################
 
 # ######## Adding custom mkinitcpio config ########
 rm /etc/mkinitcpio.conf
