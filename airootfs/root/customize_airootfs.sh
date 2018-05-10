@@ -115,7 +115,8 @@ amixer sset Master unmute
 chmod 755 /
 # #########################
 
-# #########################################################################################
-systemctl enable pacman-init.service choose-mirror.service NetworkManager gdm zramswap ntpd
+# ###########################################################################
+systemctl enable pacman-init.service choose-mirror.service NetworkManager gdm 
+systemctl enable zramswap ntpd bluetooth
 systemctl set-default graphical.target
-# #########################################################################################
+# ###########################################################################
