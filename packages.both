@@ -1,4 +1,3 @@
-## Base
 
 arch-install-scripts
 archlinux-appstream-data
@@ -37,8 +36,6 @@ ipw2200-fw
 irssi
 lftp
 libunrar
-linux-magpie
-linux-magpie-headers
 linux-firmware
 lolcat
 lvm2
@@ -148,7 +145,6 @@ flashplugin
 ## Virtualbox Tools
 
 virtualbox-host-dkms
-virtualbox-guest-utils
 
 ## Essential Packages
 
