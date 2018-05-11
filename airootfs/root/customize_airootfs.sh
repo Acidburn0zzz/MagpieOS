@@ -56,12 +56,12 @@ sed -i 's/#\(HandleHibernateKey=\)hibernate/\1ignore/' /etc/systemd/logind.conf
 sed -i 's/#\(HandleLidSwitch=\)suspend/\1ignore/' /etc/systemd/logind.conf
 # #############################################################################
 
-# ############################# Removing packages ################################################
+# ############################# Removing packages ######################################################
 pacman -R --noconfirm gnome-terminal swell-foop tali gnome-mines gnome-tetravex gnome-recipes
-pacman -R --noconfirm gnome-nibbles gnome-robots gnome-sudoku hitori quadrapassel accerciser
+pacman -R --noconfirm gnome-nibbles gnome-robots gnome-sudoku hitori quadrapassel accerciser gnome-boxes
 pacman -R --noconfirm atomix gnome-builder five-or-more four-in-a-row gnome-mahjongg devhelp lftp
 pacman -R --noconfirm gnome-klotski gnome-taquin iagno lightsoff polari gnome-multi-writer ipython
-# ################################################################################################
+# ######################################################################################################
 
 # ############ Installing custom packages to rootfs ###############
 cd /etc/skel/.magpie-packages && pacman -U --noconfirm *.pkg.tar.xz
@@ -88,15 +88,18 @@ cp /etc/skel/.magpie-settings/magpie-release /etc/
 cp /etc/skel/.magpie-settings/magpie-release /etc/arch-release
 # ############################################################
 
-# ######## Adding custom mkinitcpio config ########
-rm /etc/mkinitcpio.conf
-cp /etc/skel/.magpie-settings/mkinitcpio.conf /etc/
-# #################################################
+# ######### Adding custom mkinitcpio config ##########
+mv -f /etc/skel/.magpie-settings/mkinitcpio.conf /etc/
+# ####################################################
 
 # ######## Adding custom ntp config ########
 rm /etc/ntp.conf
 cp /etc/skel/.magpie-settings/ntp.conf /etc/
 # ##########################################
+
+# ######## Adding red lined bash theme for root ##########
+mv -f /etc/skel/.magpie-settings/bashrc_root /root/.bashrc
+# ########################################################
 
 # ###############################
 rm -dr /etc/skel/.magpie-settings
@@ -116,7 +119,7 @@ chmod 755 /
 # #########################
 
 # ###########################################################################
-systemctl enable pacman-init.service choose-mirror.service NetworkManager gdm 
+systemctl enable pacman-init.service choose-mirror.service NetworkManager gdm
 systemctl enable zramswap ntpd bluetooth
 systemctl set-default graphical.target
 # ###########################################################################
