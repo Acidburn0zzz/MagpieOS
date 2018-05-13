@@ -10,7 +10,7 @@ work_dir=build_work
 out_dir=ISO_Image
 gpg_key=
 iso_publisher="MagpieOS <http://MagpieOS.NET>"
-iso_application="MagpieOS 2.2 (Noreen)"
+iso_application="MagpieOS 2.3 (Noreen)"
 distro_name="MagpieOS"
 
 arch=$(uname -m)
