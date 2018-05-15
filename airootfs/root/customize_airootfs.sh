@@ -120,6 +120,6 @@ chmod 755 /
 
 # ###########################################################################
 systemctl enable pacman-init.service choose-mirror.service NetworkManager gdm
-systemctl enable zramswap ntpd bluetooth
+systemctl enable zramswap ntpd bluetooth org.cups.cupsd
 systemctl set-default graphical.target
 # ###########################################################################
