@@ -217,6 +217,7 @@ kglobalaccel
 kcompletion
 kservice
 lilv
+tk
 lv2
 sonnet
 qt5-multimedia
