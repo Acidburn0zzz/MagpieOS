@@ -54,6 +54,7 @@ openconnect
 openssh
 openvpn
 os-prober
+pacman-contrib
 partclone
 parted
 partimage
