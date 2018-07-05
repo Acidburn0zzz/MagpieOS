@@ -145,7 +145,7 @@ make_syslinux() {
     cp ${script_path}/syslinux/init ${work_dir}/iso/${install_dir}/boot/syslinux/
     cp ${script_path}/syslinux/bootlogo ${work_dir}/iso/${install_dir}/boot/syslinux/
     cp ${script_path}/syslinux/languages ${work_dir}/iso/${install_dir}/boot/syslinux/
-    cp ${script_path}/syslinux/gfxboot.cfg ${work_dir}/iso/${install_dir}/boot/syslinux/    
+    cp ${script_path}/syslinux/gfxboot.cfg ${work_dir}/iso/${install_dir}/boot/syslinux/
     cp -f ${work_dir}/${arch}/airootfs/usr/lib/syslinux/bios/*.c32 ${work_dir}/iso/${install_dir}/boot/syslinux
     cp -f ${work_dir}/${arch}/airootfs/usr/lib/syslinux/bios/memdisk ${work_dir}/iso/${install_dir}/boot/syslinux
     mkdir -p ${work_dir}/iso/${install_dir}/boot/syslinux/hdt
