@@ -56,12 +56,12 @@ sed -i 's/#\(HandleHibernateKey=\)hibernate/\1ignore/' /etc/systemd/logind.conf
 sed -i 's/#\(HandleLidSwitch=\)suspend/\1ignore/' /etc/systemd/logind.conf
 # #############################################################################
 
-# ############################# Removing packages ######################################################
-pacman -R --noconfirm gnome-terminal swell-foop tali gnome-mines gnome-tetravex gnome-recipes
-pacman -R --noconfirm gnome-nibbles gnome-robots gnome-sudoku hitori quadrapassel accerciser gnome-boxes
-pacman -R --noconfirm atomix gnome-builder five-or-more four-in-a-row gnome-mahjongg devhelp lftp
-pacman -R --noconfirm gnome-klotski gnome-taquin iagno lightsoff polari gnome-multi-writer ipython
-# ######################################################################################################
+# ############################# Removing packages ###################################################
+pacman -R --noconfirm swell-foop tali gnome-mines gnome-tetravex gnome-recipes accerciser gnome-boxes
+pacman -R --noconfirm gnome-nibbles gnome-sudoku hitori quadrapassel gnome-builder devhelp lftp
+pacman -R --noconfirm atomix gnome-robots five-or-more four-in-a-row gnome-mahjongg ipython
+pacman -R --noconfirm gnome-klotski gnome-taquin iagno lightsoff polari gnome-multi-writer
+# ###################################################################################################
 
 # ############ Installing custom packages to rootfs ###############
 cd /etc/skel/.magpie-packages && pacman -U --noconfirm *.pkg.tar.xz
