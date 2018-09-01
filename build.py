@@ -115,9 +115,9 @@ def main(arg):
             MainWork()
         except KeyboardInterrupt:
             clean()
-            print('\nerror: operation has been canceled by ' + subprocess.getoutput("echo $(whoami)"))
+            print('error: operation has been canceled by ' + subprocess.getoutput("echo $(whoami)"))
     else:
-        print('\nerror: you cannot perform this operation unless you are root.')
+        print('error: you cannot perform this operation unless you are root.')
 
 
 if __name__ == '__main__':
