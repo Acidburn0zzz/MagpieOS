@@ -167,11 +167,13 @@ telegram-desktop
 ## Themes
 
 adapta-gtk-theme
+qogir-gtk-theme
 papirus-icon-theme
 
 ## Magpie Repository
 
 aic94xx-firmware
+zd1211-firmware
 breeze-cursor-theme
 breeze-adapta-cursor-theme
 ckbcomp
