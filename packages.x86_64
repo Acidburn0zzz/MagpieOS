@@ -1,3 +1,4 @@
+## Base
 
 arch-install-scripts
 archlinux-appstream-data
@@ -169,6 +170,8 @@ telegram-desktop
 adapta-gtk-theme
 qogir-gtk-theme
 papirus-icon-theme
+qt5ct
+qt5-styleplugins
 
 ## Magpie Repository
 
