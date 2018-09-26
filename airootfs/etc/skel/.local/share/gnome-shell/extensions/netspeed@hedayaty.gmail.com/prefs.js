@@ -45,7 +45,6 @@ function init()
 {
     let localeDir = Extension.dir.get_child('locale');
     if (localeDir.query_exists(null)) {
-        Gettext.textdomain("netspeed");
         Gettext.bindtextdomain('netspeed', localeDir.get_path());
 	}
 }
@@ -70,7 +69,7 @@ const App = new Lang.Class(
         let nmc = libnm_glib ? NMC.Client.new() : NMC.Client.new(null);
         this._devices = nmc.get_devices() || [ ];
 
-        for each (let dev in this._devices) {
+        for (let dev of this._devices) {
             let iconname;
             switch (dev.device_type) {
                 case NM.DeviceType.ETHERNET:

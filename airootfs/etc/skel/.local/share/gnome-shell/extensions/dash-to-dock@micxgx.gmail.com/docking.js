@@ -33,7 +33,7 @@ const LauncherAPI = Me.imports.launcherAPI;
 
 const DOCK_DWELL_CHECK_INTERVAL = 100;
 
-const State = {
+var State = {
     HIDDEN:  0,
     SHOWING: 1,
     SHOWN:   2,
@@ -297,7 +297,7 @@ const DockedDash = new Lang.Class({
         ], [
             // update when workarea changes, for instance if  other extensions modify the struts
             //(like moving th panel at the bottom)
-            global.screen,
+            Utils.DisplayWrapper.getScreen(),
             'workareas-changed',
             Lang.bind(this, this._resetPosition)
         ], [
@@ -323,7 +323,7 @@ const DockedDash = new Lang.Class({
             'notify::checked',
             Lang.bind(this, this._syncShowAppsButtonToggled)
         ], [
-            global.screen,
+            Utils.DisplayWrapper.getScreen(),
             'in-fullscreen-changed',
             Lang.bind(this, this._updateBarrier)
         ], [
@@ -349,14 +349,6 @@ const DockedDash = new Lang.Class({
             Lang.bind(this, function() {
                 Main.overview.dashIconSize = this.dash.iconSize;
             })
-        ], [
-            this._remoteModel,
-            'entry-added',
-            Lang.bind(this, this._onLauncherEntryRemoteAdded)
-        ], [
-            this._remoteModel,
-            'entry-removed',
-            Lang.bind(this, this._onLauncherEntryRemoteRemoved)
         ]);
 
         this._injectionsHandler = new Utils.InjectionsHandler();
@@ -767,6 +759,9 @@ const DockedDash = new Lang.Class({
             transition: 'easeOutQuad',
             onComplete: Lang.bind(this, function() {
                 this._dockState = State.HIDDEN;
+                // Remove queued barried removal if any
+                if (this._removeBarrierTimeoutId > 0)
+                    Mainloop.source_remove(this._removeBarrierTimeoutId);
                 this._updateBarrier();
             })
         });
@@ -1296,7 +1291,7 @@ const DockedDash = new Lang.Class({
             if (Main.overview.visible && Main.overview.viewSelector.getActivePage() !== ViewSelector.ViewPage.WINDOWS)
                 return false;
 
-            let activeWs = global.screen.get_active_workspace();
+            let activeWs = Utils.DisplayWrapper.getWorkspaceManager().get_active_workspace();
             let direction = null;
 
             switch (event.get_scroll_direction()) {
@@ -1352,28 +1347,6 @@ const DockedDash = new Lang.Class({
             else
                 return false;
         }
-    },
-
-    _onLauncherEntryRemoteAdded: function(remoteModel, entry) {
-        if (!entry || !entry.appId())
-            return;
-
-        this.dash.getAppIcons().forEach(function(icon) {
-            if (icon && icon.app && icon.app.id == entry.appId()) {
-                icon.insertEntryRemote(entry);
-            }
-        });
-    },
-
-    _onLauncherEntryRemoteRemoved: function(remoteModel, entry) {
-        if (!entry || !entry.appId())
-            return;
-
-        this.dash.getAppIcons().forEach(function(icon) {
-            if (icon && icon.app && icon.app.id == entry.appId()) {
-                icon.removeEntryRemote(entry);
-            }
-        });
     },
 
     _activateApp: function(appIndex) {
@@ -1611,7 +1584,7 @@ const WorkspaceIsolation = new Lang.Class({
 
         this._allDocks.forEach(function(dock) {
             this._signalsHandler.addWithLabel('isolation', [
-                global.screen,
+                Utils.DisplayWrapper.getScreen(),
                 'restacked',
                 Lang.bind(dock.dash, dock.dash._queueRedisplay)
             ], [
@@ -1624,7 +1597,7 @@ const WorkspaceIsolation = new Lang.Class({
             // might migrate from one monitor to another without triggering 'restacked'
             if (this._settings.get_boolean('isolate-monitors'))
                 this._signalsHandler.addWithLabel('isolation', [
-                    global.screen,
+                    Utils.DisplayWrapper.getScreen(),
                     'window-entered-monitor',
                     Lang.bind(dock.dash, dock.dash._queueRedisplay)
                 ]);
@@ -1635,13 +1608,13 @@ const WorkspaceIsolation = new Lang.Class({
         function IsolatedOverview() {
             // These lines take care of Nautilus for icons on Desktop
             let windows = this.get_windows().filter(function(w) {
-                return w.get_workspace().index() == global.screen.get_active_workspace_index();
+                return w.get_workspace().index() == Utils.DisplayWrapper.getWorkspaceManager().get_active_workspace_index();
             });
             if (windows.length == 1)
                 if (windows[0].skip_taskbar)
                     return this.open_new_window(-1);
 
-            if (this.is_on_workspace(global.screen.get_active_workspace()))
+            if (this.is_on_workspace(Utils.DisplayWrapper.getWorkspaceManager().get_active_workspace()))
                 return Main.activateWindow(windows[0]);
             return this.open_new_window(-1);
         }
@@ -1695,7 +1668,7 @@ var DockManager = new Lang.Class({
         // Connect relevant signals to the toggling function
         this._signalsHandler = new Utils.GlobalSignalsHandler();
         this._signalsHandler.add([
-            global.screen,
+            Utils.DisplayWrapper.getMonitorManager(),
             'monitors-changed',
             Lang.bind(this, this._toggle)
         ], [
@@ -1722,6 +1695,14 @@ var DockManager = new Lang.Class({
     },
 
     _createDocks: function() {
+
+        // If there are no monitors (headless configurations, but it can also happen temporary while disconnecting
+        // and reconnecting monitors), just do nothing. When a monitor will be connected we we'll be notified and
+        // and thus create the docks. This prevents pointing trying to access monitors throughout the code, were we
+        // are assuming that at least the primary monitor is present.
+        if (Main.layoutManager.monitors.length <= 0) {
+            return;
+        }
 
         this._preferredMonitorIndex = this._settings.get_int('preferred-monitor');
         // In case of multi-monitor, we consider the dock on the primary monitor to be the preferred (main) one
