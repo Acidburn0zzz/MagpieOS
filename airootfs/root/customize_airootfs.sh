@@ -101,14 +101,26 @@ cp /etc/skel/.magpie-settings/ntp.conf /etc/
 mv -f /etc/skel/.magpie-settings/bashrc_root /root/.bashrc
 # ########################################################
 
+# ###################### Adding MagpieOS Logo in gdm login screen #############################
+sudo -u gdm dbus-launch gsettings set org.gnome.login-screen logo '/etc/skel/.mapieos-logo.png'
+dconf update
+# #############################################################################################
+
+# ###################### Adding cursor theme in  gdm login screen ########################
+sudo -u gdm dbus-launch gsettings set org.gnome.desktop.interface cursor-theme 'Neon-Blue'
+dconf update
+# ########################################################################################
+
 # ###############################
 rm -dr /etc/skel/.magpie-settings
 rm -dr /etc/skel/.magpie-packages
 # ###############################
 
-# ### Tap to click support for gnome settings ####
-rm -v /usr/share/X11/xorg.conf.d/70-synaptics.conf
-# ################################################
+# ####################### Tap to click support for gnome settings ############################
+rm -rf /usr/share/X11/xorg.conf.d/70-synaptics.conf
+sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+dconf update
+# ############################################################################################
 
 # ## Unmuting speakers ##
 amixer sset Master unmute
