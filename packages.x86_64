@@ -119,6 +119,7 @@ gnome
 gnome-extra
 gnome-common
 gdm
+gdm3setup
 dconf
 gconf
 nautilus-share
