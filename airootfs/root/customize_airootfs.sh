@@ -111,16 +111,20 @@ sudo -u gdm dbus-launch gsettings set org.gnome.desktop.interface cursor-theme '
 dconf update
 # ########################################################################################
 
-# ###############################
-rm -dr /etc/skel/.magpie-settings
-rm -dr /etc/skel/.magpie-packages
-# ###############################
-
 # ####################### Tap to click support for gnome settings ############################
 rm -rf /usr/share/X11/xorg.conf.d/70-synaptics.conf
 sudo -u gdm dbus-launch gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 dconf update
 # ############################################################################################
+
+# ########### Adding Gnome File Manager(Nautilus) drive mount without password #############
+cp -f /etc/skel/.magpie-settings/org.freedesktop.UDisks2.policy /usr/share/polkit-1/actions/
+# ##########################################################################################
+
+# ###############################
+rm -dr /etc/skel/.magpie-settings
+rm -dr /etc/skel/.magpie-packages
+# ###############################
 
 # ## Unmuting speakers ##
 amixer sset Master unmute
