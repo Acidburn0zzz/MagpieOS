@@ -24,7 +24,6 @@ class MainWork():
         self.clean()
         self.distroInfoProcess()
         self.scriptBuilding()
-        # self.run_command('sudo ./build.sh -v')
         self.runCommand()
         self.clean()
 
@@ -75,16 +74,9 @@ class MainWork():
         with open('build.sh', 'w') as file:
             file.write(self.scriptData)
         subprocess.call('chmod +x build.sh', shell=True)
-
-    def run_command(self, command):
-        process = subprocess.Popen(shlex.split(command), stdout=subprocess.PIPE)
-        while True:
-            output = process.stdout.readline().decode('utf-8')
-            if output == '' and process.poll() is not None:
-                break
-            if output:
-                print(output.strip())
-        return process.poll()
+        subprocess.call('cp -f root_customizer.sh airootfs/root/customize_airootfs.sh', shell=True)
+        subprocess.call('sudo chmod +x airootfs/root/customize_airootfs.sh', shell=True)
+        subprocess.call('sudo chmod 777 airootfs/root/customize_airootfs.sh', shell=True)
 
     def runCommand(self):
         check = int(1)
@@ -98,6 +90,7 @@ class MainWork():
 
 def clean():
     subprocess.call('sudo rm -rf build.sh build_work', shell = True)
+    subprocess.call('sudo rm -rf airootfs/root/customize_airootfs.sh', shell=True)
     subprocess.call('sudo rm -rf airootfs/etc/skel/.magpie-settings/magpie-release', shell = True)
     subprocess.call('sudo rm -rf airootfs/etc/skel/.magpie-settings/lsb-release', shell = True)
     subprocess.call('sudo rm -rf airootfs/etc/skel/.magpie-settings/os-release', shell = True)
