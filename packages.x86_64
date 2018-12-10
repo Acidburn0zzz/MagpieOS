@@ -208,6 +208,7 @@ yaml-cpp
 kconfig
 kcoreaddons
 qt5-svg
+qt5-xmlpatterns
 polkit-qt5
 kauth
 kcodecs
