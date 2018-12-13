@@ -145,8 +145,10 @@ flashplugin
 
 ## Virtualbox Tools
 
-virtualbox-host-dkms
 virtualbox-guest-utils
+virtualbox-guest-modules-arch
+# virtualbox-host-dkms
+# virtualbox-guest-utils
 
 ## Essential Packages
 
