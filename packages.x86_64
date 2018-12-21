@@ -99,6 +99,8 @@ xterm
 mesa
 ttf-dejavu
 ttf-freebanglafont
+noto-fonts
+ttf-hack
 libva
 libva-mesa-driver
 intel-ucode
