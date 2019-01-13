@@ -17,7 +17,6 @@ dnsutils
 dmidecode
 dosfstools
 efibootmgr
-elinks
 exfat-utils
 e2fsprogs
 ethtool
@@ -168,7 +167,6 @@ ttf-fira-code
 otf-fira-code
 qt4
 simplescreenrecorder
-telegram-desktop
 
 ## Themes
 
@@ -203,7 +201,6 @@ pamac
 vimix-gtk-magpie-theme
 wd719x-firmware
 yay
-zramswap
 
 ## Extra Packages
 

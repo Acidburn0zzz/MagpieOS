@@ -56,12 +56,12 @@ sed -i 's/#\(HandleHibernateKey=\)hibernate/\1ignore/' /etc/systemd/logind.conf
 sed -i 's/#\(HandleLidSwitch=\)suspend/\1ignore/' /etc/systemd/logind.conf
 # #############################################################################
 
-# ############################# Removing packages ####################################################
+# ############################# Removing packages ############################################################
 pacman -R --noconfirm swell-foop tali gnome-mines gnome-tetravex gnome-recipes accerciser gnome-boxes
-pacman -R --noconfirm gnome-nibbles gnome-sudoku hitori quadrapassel gnome-builder devhelp lftp
+pacman -R --noconfirm gnome-nibbles gnome-sudoku hitori quadrapassel gnome-builder devhelp lftp gnome-software
 pacman -R --noconfirm gnome-robots five-or-more four-in-a-row gnome-mahjongg ipython gnome-backgrounds
-pacman -R --noconfirm gnome-klotski gnome-taquin iagno lightsoff polari gnome-multi-writer epiphany
-# ####################################################################################################
+pacman -R --noconfirm gnome-klotski gnome-taquin iagno lightsoff polari gnome-multi-writer epiphany 
+# ############################################################################################################
 
 # ############ Installing custom packages to rootfs ###############
 cd /etc/skel/.magpie-packages && pacman -U --noconfirm *.pkg.tar.xz
@@ -89,7 +89,7 @@ cp /etc/skel/.magpie-settings/magpie-release /etc/arch-release
 # ############################################################
 
 # ######### Adding custom mkinitcpio config ##########
-mv -f /etc/skel/.magpie-settings/mkinitcpio.conf /etc/
+mv -vf /etc/skel/.magpie-settings/mkinitcpio.conf /etc/
 # ####################################################
 
 # ######## Adding custom ntp config ########
@@ -136,6 +136,6 @@ chmod 755 /
 
 # ###########################################################################
 systemctl enable pacman-init.service choose-mirror.service NetworkManager gdm
-systemctl enable zramswap ntpd bluetooth org.cups.cupsd
+systemctl enable ntpd bluetooth org.cups.cupsd
 systemctl set-default graphical.target
 # ###########################################################################
